@@ -4,4 +4,4 @@ pytest
 pytest-testconfig
 requests
 selenium
-urllib
+urllib3
