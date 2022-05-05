@@ -19,7 +19,9 @@ class ISelenium(unittest.TestCase):
     # HOME目录每个机器不一样,home/username
     def get_config(self):
         config = configparser.ConfigParser()
-        config.read(os.path.join(os.environ['HOME'], 'iselenium.ini'))
+        print(os.getcwd())
+        # config.read(os.path.join(os.environ['HOME'], 'iselenium.ini'))
+        config.read(os.path.join(os.getcwd(), 'iselenium.ini'))
         return config
 
     def tearDown(self):
