@@ -47,6 +47,8 @@ class ISelenium(unittest.TestCase):
             print('使用无界面方式运行')
             # 添加浏览器参数，控制浏览器是无界面还是有界面
             chrome_options.add_argument("--headless")
+            chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
+            chrome_options.add_experimental_option('useAutomationExtension', False)
 
         self.driver = webdriver.Chrome(executable_path=config.get('driver', 'chrome_driver'), options=chrome_options)
 
