@@ -17,9 +17,10 @@ from selenium.webdriver.chrome.options import Options
 class ISelenium(unittest.TestCase):
     # 读取配置文件
     # HOME目录每个机器不一样,home/username
+    # getcwd()读取当前目录下的配置文件
     def get_config(self):
         config = configparser.ConfigParser()
-        print(os.getcwd())
+        # print(os.getcwd())
         # config.read(os.path.join(os.environ['HOME'], 'iselenium.ini'))
         config.read(os.path.join(os.getcwd(), 'iselenium.ini'))
         return config
@@ -36,6 +37,7 @@ class ISelenium(unittest.TestCase):
         try:
             # using_headless就是一个控制变量
             using_headless = os.environ["using_headless"]
+            # using_headless = 'True'
         except KeyError:
             using_headless = None
             print('没有配置环境变量 using_headless，按照有界面方式运行自动化测试')
@@ -79,9 +81,9 @@ class ISelenium(unittest.TestCase):
         elem = self.driver.find_element(By.ID, "kw")
         elem.send_keys(f'{search_keyword}')
         elem.send_keys(Keys.ENTER)
-        print(f'搜索关键词~{search_keyword}')
         time.sleep(5)
-        self.assertTrue(f'{search_keyword}' in self.driver.title, msg=f'{testcase_name}校验pass')
+        print(f'搜索关键词~{search_keyword}')
+        self.assertTrue(f'{search_keyword}' in self.driver.title, msg=f'{testcase_name}校验失败')
 
 
 
