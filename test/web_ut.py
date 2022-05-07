@@ -47,6 +47,7 @@ class ISelenium(unittest.TestCase):
             print('使用无界面方式运行')
             # 添加浏览器参数，控制浏览器是无界面还是有界面
             chrome_options.add_argument("--headless")
+            # 去掉提示受到自动软件控制提示，防止百度弹验证码
             chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
             chrome_options.add_experimental_option('useAutomationExtension', False)
 
